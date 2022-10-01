@@ -1,23 +1,23 @@
 import "dotenv/config";
-import {testquery} from "./db.js";
 import express from "express";
-import mysql from "mysql2/promise";
+import mongoose from "mongoose";
 
-const pool = await mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
-});
-
-const routes = require('./routes');
+import objednavkaRoutes from "./routes/objednavkaRoutes.js";
+import usersRoutes from "./routes/usersRoutes.js";
+import kuponyRoutes from "./routes/kuponyRoutes.js";
+import zboziRoutes from "./routes/zboziRoutes.js";
 
 const app = express();
 const port = process.env.PORT;
 
 app.use(express.json());
-app.use(routes);
+app.use('/objednavky', objednavkaRoutes);
+app.use('/users', usersRoutes);
+app.use('/kupony', kuponyRoutes);
+app.use('/zbozi', zboziRoutes);
 
-app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
-});
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        app.listen(port, () => console.log(`Listening on port ${port}!`));
+    })
+    .catch(err => console.log(err));
