@@ -1,0 +1,14 @@
+.header{
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    font-size: 35px;
+    color: #4d4d4d;
+}
+
+.footer{
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    color: #4d4d4d;
+}

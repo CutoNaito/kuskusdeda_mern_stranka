@@ -1,8 +1,10 @@
 const Header = () => {
     return (
-        <header>
-            <img src="" alt="kuskusdeda-logo"/>
-            <h1>Kuskus Deda</h1>
+        <header className="header">
+            <a href="">Novinky</a>
+            <a href="">Menu</a>
+            <a href="">Kupony a aplikace</a>
+            <a href="">Kontakt</a>
         </header>
     )
 }
