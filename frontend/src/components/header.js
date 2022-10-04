@@ -1,12 +1,23 @@
+import Button from "react-bootstrap/Button";
+import {Link} from "react-router-dom";
+
 const Header = () => {
     return (
         <header className="header">
-            <a href="">Novinky</a>
-            <a href="">Menu</a>
-            <a href="">Kupony a aplikace</a>
-            <a href="">Kontakt</a>
+            <Button variant="light" size="lg" block>
+                <Link to={"/novinky"}><p className="headerLink">Novinky</p></Link>
+            </Button>
+            <Button variant="light" size="lg" block>
+                <Link to={"/menu"}><p className="headerLink">Menu</p></Link>
+            </Button>
+            <Button variant="light" size="lg" block>
+                <Link to={"/aplikace"}><p className="headerLink">Kupony a aplikace</p></Link>
+            </Button>
+            <Button variant="light" size="lg" block>
+                <Link to={"/kontakt"}><p className="headerLink">Kontakt</p></Link>
+            </Button>
         </header>
     )
 }
 
-export default Header
+export default Header;
