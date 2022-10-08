@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <header className="header">
             <Button variant="light" size="lg" block>
-                <Link to={"/novinky"}><p className="headerLink">Novinky</p></Link>
+                <Link to={"../"}><p className="headerLink">Novinky</p></Link>
             </Button>
             <Button variant="light" size="lg" block>
                 <Link to={"/menu"}><p className="headerLink">Menu</p></Link>

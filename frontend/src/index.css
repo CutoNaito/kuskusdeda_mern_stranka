@@ -28,3 +28,8 @@
     text-align: center;
     color: #4d4d4d;
 }
+
+.menuitem img{
+    width: 100%;
+    margin: 10px;
+}
