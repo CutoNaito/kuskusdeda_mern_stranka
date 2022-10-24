@@ -12,7 +12,7 @@ function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {username, password, email, isAdmin};
-        const response = await fetch("http://localhost:5000/users/register", {
+        const response = await fetch("http://localhost:4000/users/users", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -29,14 +29,14 @@ function Register() {
             console.log(result);
         }
 
-        document.cookie = JSON.stringify({username: result.username, isAdmin: result.isAdmin, password: result.password});
+        document.cookie = JSON.stringify({username: result.username, password: result.password});
     }
     return (
         <div>
             <Header />
             <main>
                 <h1>Registrace</h1>
-                <form>
+                <form className="form" onSubmit={handleSubmit}>
                     <label htmlFor="username">Uživatelské jméno</label>
                     <input
                         type="text"
@@ -69,3 +69,5 @@ function Register() {
         </div>
     );
 }
+
+export default Register;

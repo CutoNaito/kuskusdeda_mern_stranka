@@ -16,6 +16,9 @@ const Header = () => {
             <Button variant="light" size="lg" block>
                 <Link to={"/kontakt"}><p className="headerLink">Kontakt</p></Link>
             </Button>
+            <Button variant="light" size="lg" block>
+                <Link to={"/register"}><p className="headerLink">Registrace</p></Link>
+            </Button>
         </header>
     )
 }
