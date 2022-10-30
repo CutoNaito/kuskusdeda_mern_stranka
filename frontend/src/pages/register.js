@@ -7,12 +7,13 @@ function Register() {
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [email, setEmail] = React.useState("");
-    const [isAdmin, setIsAdmin] = React.useState(false);
+    const [isAdmin, setIsAdmin] = React.useState("false");
+    const [error, setError] = React.useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {username, password, email, isAdmin};
-        const response = await fetch("http://localhost:4000/users/users", {
+        const response = await fetch("/users/users", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -25,11 +26,14 @@ function Register() {
             setUsername("");
             setPassword("");
             setEmail("");
-            setIsAdmin(false);
-            console.log(result);
+            setIsAdmin("");
+            setError(null);
+        }
+        if(!result.ok) {
+            setError(result.error);
         }
 
-        document.cookie = JSON.stringify({username: result.username, password: result.password});
+        document.cookie = JSON.stringify(result);
     }
     return (
         <div>
@@ -62,7 +66,7 @@ function Register() {
                     /><br />
                     <label form="password">Potvrzení hesla:</label><br />
                     <input type="password" id="password" name="password" /><br />
-                    <input type="submit" value="Registrovat" />
+                    <button>Add user</button>
                 </form>
             </main>
             <Footer />
