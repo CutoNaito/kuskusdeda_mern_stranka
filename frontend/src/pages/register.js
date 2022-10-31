@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { useNavigate } from "react-router-dom";
 import Header from '../components/header';
 import Footer from "../components/footer";
 
@@ -9,6 +10,8 @@ function Register() {
     const [email, setEmail] = React.useState("");
     const [isAdmin, setIsAdmin] = React.useState("false");
     const [error, setError] = React.useState(null);
+
+    const history = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,18 +25,15 @@ function Register() {
         });
         const result = await response.json();
 
-        if(result.ok) {
-            setUsername("");
-            setPassword("");
-            setEmail("");
-            setIsAdmin("");
-            setError(null);
-        }
-        if(!result.ok) {
+        if(result.error) {
             setError(result.error);
         }
-
-        document.cookie = JSON.stringify(result);
+        else {
+            document.cookie = "username=" + result.username;
+            document.cookie = "isAdmin=" + result.isAdmin;
+            document.cookie = "email=" + result.email;
+            history("../");
+        }
     }
     return (
         <div>
