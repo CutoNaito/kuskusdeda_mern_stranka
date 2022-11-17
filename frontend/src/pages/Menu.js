@@ -1,7 +1,22 @@
 import Header from "../components/header";
 import Footer from "../components/footer";
+import { useEffect, useState} from "react";
 
 function Menu() {
+    const [menu, setMenu] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch("/zbozi/zbozi");
+            const result = await response.json();
+
+            if (!result.error) {
+                setMenu(result);
+            }
+        }
+        fetchData().then(r => console.log(r));
+    }, []);
+
     return (
         <div>
             <Header />
@@ -13,17 +28,15 @@ function Menu() {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-6 menuitem">
-                        <img src="https://cdn.discordapp.com/attachments/841411481693847582/1025873871838121984/Snimek_obrazovky_2022-10-01_225535.png" alt="MenuItem1" />
-                    </div>
-                    <div className="col-6 menuitem">
-                        <img src="https://cdn.discordapp.com/attachments/841411481693847582/1025873871838121984/Snimek_obrazovky_2022-10-01_225535.png" alt="MenuItem1" />
-                    </div>
-                    <div className="col-6 menuitem">
-                        <img src="https://cdn.discordapp.com/attachments/841411481693847582/1025873871838121984/Snimek_obrazovky_2022-10-01_225535.png" alt="MenuItem1" />
-                    </div>
-                    <div className="col-6 menuitem">
-                        <img src="https://cdn.discordapp.com/attachments/841411481693847582/1025873871838121984/Snimek_obrazovky_2022-10-01_225535.png" alt="MenuItem1" />
+                    <div className="col-12">
+                        {menu.map((item) => (
+                            <div className="card" key={item.id}>
+                                <h2>{item.nazev}</h2>
+                                <p>{item.popis}</p>
+                                <p>{item.cena}</p>
+                                <img src={item.obrazek} alt={item.nazev} />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
