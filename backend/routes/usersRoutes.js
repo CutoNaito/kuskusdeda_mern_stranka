@@ -7,5 +7,6 @@ router.get("/users/:username", defaultExport.getUser);
 router.post("/users/", defaultExport.createUser);
 router.patch("/users/:id", defaultExport.updateUser);
 router.delete("/users/:id", defaultExport.deleteUser);
+router.get("/users/token/:token", defaultExport.getUsersByToken);
 
 export default router;

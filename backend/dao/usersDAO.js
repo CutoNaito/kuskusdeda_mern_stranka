@@ -16,6 +16,17 @@ const getUser = async (req, res) => {
     }
 }
 
+const getUsersByToken = async (req, res) => {
+    const {token} = req.params;
+    const user = await usersModel.find({token: token});
+    if (!user) {
+        res.status(404).json({message: "User not found"});
+    }
+    else {
+        res.status(200).json(user);
+    }
+}
+
 const createUser = async (req, res) => {
     const {username, password, email, isAdmin, token} = req.body;
     try {
@@ -47,4 +58,4 @@ const deleteUser = async (req, res) => {
     }
 }
 
-export default {getUsers, getUser, createUser, updateUser, deleteUser};
+export default {getUsers, getUser, createUser, updateUser, deleteUser, getUsersByToken};
