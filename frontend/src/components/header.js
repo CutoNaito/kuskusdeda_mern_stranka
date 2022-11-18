@@ -44,6 +44,7 @@ const Header = () => {
                 <Button id="logout" variant="light" size="lg" block
                         onClick={() => {
                             document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                            window.location.reload();
                         }}>
                     Odhlásit se
                 </Button>
