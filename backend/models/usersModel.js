@@ -17,6 +17,10 @@ const userSchema = new schema({
     isAdmin: {
         type: String,
         required: true,
+    },
+    token: {
+        type: String,
+        required: false,
     }
 }, {timestamps: true});
 

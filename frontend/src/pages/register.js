@@ -4,18 +4,29 @@ import { useNavigate } from "react-router-dom";
 import Header from '../components/header';
 import Footer from "../components/footer";
 
+function GenerateRandomString(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
 function Register() {
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [email, setEmail] = React.useState("");
-    const [isAdmin, setIsAdmin] = React.useState("false");
-    const [error, setError] = React.useState(null);
+    const [isAdmin] = React.useState("false");
+    const [setError] = React.useState(null);
+    const [token] = React.useState(GenerateRandomString(20));
 
     const history = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const data = {username, password, email, isAdmin};
+        const data = {username, password, email, isAdmin, token};
         const response = await fetch("/users/users", {
             method: "POST",
             body: JSON.stringify(data),
@@ -29,9 +40,7 @@ function Register() {
             setError(result.error);
         }
         else {
-            document.cookie = "username=" + result.username;
-            document.cookie = "isAdmin=" + result.isAdmin;
-            document.cookie = "email=" + result.email;
+            document.cookie = "token=" + result.token;
             history("../");
         }
     }
