@@ -40,6 +40,9 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
     const {id} = req.params;
     const {username, password, email, isAdmin, token} = req.body;
+    if(req.header('Authorization') !== process.env.ADMIN_TOKEN) {
+        return res.status(401).json({message: "Unauthorized"});
+    }
     const user = await usersModel.findByIdAndUpdate(id, {username, password, email, isAdmin, token}, {new: true});
     if (!user) {
         res.status(404).json({message: "User not found"});
@@ -50,6 +53,9 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     const {id} = req.params;
+    if(req.header('Authorization') !== process.env.ADMIN_TOKEN) {
+        return res.status(401).json({message: "Unauthorized"});
+    }
     const user = await usersModel.findByIdAndDelete(id);
     if (!user) {
         res.status(404).json({message: "User not found"});

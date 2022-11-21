@@ -18,6 +18,9 @@ const getKupon = async (req, res) => {
 
 const createKupon = async (req, res) => {
     const {kod, user} = req.body;
+    if(req.header('Authorization') !== process.env.ADMIN_TOKEN) {
+        return res.status(401).json({message: "Unauthorized"});
+    }
     try {
         const kupon = await kuponyModel.create({kod, user});
         res.status(201).json(kupon);
@@ -29,6 +32,9 @@ const createKupon = async (req, res) => {
 const updateKupon = async (req, res) => {
     const {id} = req.params;
     const {kod, user} = req.body;
+    if(req.header('Authorization') !== process.env.ADMIN_TOKEN) {
+        return res.status(401).json({message: "Unauthorized"});
+    }
     const kupon = await kuponyModel.findByIdAndUpdate(id, {kod, user}, {new: true});
     if (!kupon) {
         res.status(404).json({message: "Kupon not found"});
@@ -39,6 +45,9 @@ const updateKupon = async (req, res) => {
 
 const deleteKupon = async (req, res) => {
     const {id} = req.params;
+    if(req.header('Authorization') !== process.env.ADMIN_TOKEN) {
+        return res.status(401).json({message: "Unauthorized"});
+    }
     const kupon = await kuponyModel.findByIdAndDelete(id);
     if (!kupon) {
         res.status(404).json({message: "Kupon not found"});

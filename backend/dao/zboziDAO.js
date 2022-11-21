@@ -18,6 +18,9 @@ const getZboziById = async (req, res) => {
 
 const createZbozi = async (req, res) => {
     const {nazev, popis, cena, obrazek} = req.body;
+    if(req.header('Authorization') !== process.env.ADMIN_TOKEN) {
+        return res.status(401).json({message: "Unauthorized"});
+    }
     try {
         const zbozi = await zboziModel.create({nazev, popis, cena, obrazek});
         res.status(201).json(zbozi);
@@ -29,6 +32,9 @@ const createZbozi = async (req, res) => {
 const updateZbozi = async (req, res) => {
     const {id} = req.params;
     const {nazev, popis, cena, obrazek} = req.body;
+    if(req.header('Authorization') !== process.env.ADMIN_TOKEN) {
+        return res.status(401).json({message: "Unauthorized"});
+    }
     const zbozi = await zboziModel.findByIdAndUpdate(id, {nazev, popis, cena, obrazek}, {new: true});
     if (!zbozi) {
         res.status(404).json({message: "Zbozi not found"});
@@ -39,6 +45,9 @@ const updateZbozi = async (req, res) => {
 
 const deleteZbozi = async (req, res) => {
     const {id} = req.params;
+    if(req.header('Authorization') !== process.env.ADMIN_TOKEN) {
+        return res.status(401).json({message: "Unauthorized"});
+    }
     const zbozi = await zboziModel.findByIdAndDelete(id);
     if (!zbozi) {
         res.status(404).json({message: "Zbozi not found"});

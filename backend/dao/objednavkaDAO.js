@@ -29,6 +29,9 @@ const createObjednavka = async (req, res) => {
 const updateObjednavka = async (req, res) => {
     const {id} = req.params;
     const {kod, user} = req.body;
+    if(req.header('Authorization') !== process.env.ADMIN_TOKEN) {
+        return res.status(401).json({message: "Unauthorized"});
+    }
     const objednavka = await objednavkaModel.findByIdAndUpdate(id, {kod, user}, {new: true});
     if (!objednavka) {
         res.status(404).json({message: "Objednavka not found"});
@@ -39,6 +42,9 @@ const updateObjednavka = async (req, res) => {
 
 const deleteObjednavka = async (req, res) => {
     const {id} = req.params;
+    if(req.header('Authorization') !== process.env.ADMIN_TOKEN) {
+        return res.status(401).json({message: "Unauthorized"});
+    }
     const objednavka = await objednavkaModel.findByIdAndDelete(id);
     if (!objednavka) {
         res.status(404).json({message: "Objednavka not found"});
