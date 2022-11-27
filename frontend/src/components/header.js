@@ -12,7 +12,7 @@ const Header = () => {
                     <Link to={"/menu"}><p className="headerLink">Menu</p></Link>
                 </Button>
                 <Button variant="light" size="lg" block>
-                    <Link to={"/aplikace"}><p className="headerLink">Kupony a aplikace</p></Link>
+                    <Link to={"/aplikace"}><p className="headerLink">Aplikace</p></Link>
                 </Button>
                 <Button variant="light" size="lg" block>
                     <Link to={"/kontakt"}><p className="headerLink">Kontakt</p></Link>
@@ -35,7 +35,7 @@ const Header = () => {
                     <Link to={"/menu"}><p className="headerLink">Menu</p></Link>
                 </Button>
                 <Button variant="light" size="lg" block>
-                    <Link to={"/aplikace"}><p className="headerLink">Kupony a aplikace</p></Link>
+                    <Link to={"/aplikace"}><p className="headerLink">Aplikace</p></Link>
                 </Button>
                 <Button variant="light" size="lg" block>
                     <Link to={"/kontakt"}><p className="headerLink">Kontakt</p></Link>
