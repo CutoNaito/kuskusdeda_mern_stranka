@@ -1,3 +1,6 @@
+$button-color: #666;
+$button-color-hover: #333;
+
 .header {
     background-color: white;
     padding: 20px;
@@ -33,5 +36,91 @@
     img {
         width: 100%;
         margin: 10px;
+    }
+}
+
+
+main {
+
+    h1 {
+        text-align: center;
+        font-size: 35px;
+        color: #4d4d4d;
+    }
+    .form {
+        border: 1px solid #f1f1f1;
+        padding: 20px;
+        margin: 20px;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+
+        label {
+            font-size: 20px;
+            color: #4d4d4d;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: $button-color;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+
+            &:hover {
+                background-color: $button-color-hover;
+            }
+        }
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        margin: 20px;    
+
+        .card {
+            border: 1px solid #f1f1f1;
+            padding: 20px;
+            margin: 20px;
+            width: 30%;
+            margin-left: auto;
+            margin-right: auto;
+
+            img {
+                width: 100%;
+            }
+
+            h2 {
+                font-size: 20px;
+                color: #4d4d4d;
+            }
+
+            p {
+                font-size: 15px;
+                color: #4d4d4d;
+            }
+
+            button {
+                background-color: $button-color;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+            }
+        }
     }
 }

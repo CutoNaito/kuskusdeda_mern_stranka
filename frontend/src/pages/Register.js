@@ -75,7 +75,7 @@ function Register() {
                     /><br />
                     <label form="password">Potvrzení hesla:</label><br />
                     <input type="password" id="password" name="password" /><br />
-                    <button>Add user</button>
+                    <button>Registrovat</button>
                 </form>
             </main>
             <Footer />

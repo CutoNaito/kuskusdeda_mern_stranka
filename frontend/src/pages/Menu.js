@@ -28,7 +28,7 @@ function Menu() {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-12">
+                    <div className="col-12 card-container">
                         {menu.map((item) => (
                             <div className="card" key={item.id}>
                                 <h2>{item.nazev}</h2>

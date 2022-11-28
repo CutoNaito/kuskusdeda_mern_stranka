@@ -32,4 +32,76 @@
   margin: 10px;
 }
 
+main h1 {
+  text-align: center;
+  font-size: 35px;
+  color: #4d4d4d;
+}
+main .form {
+  border: 1px solid #f1f1f1;
+  padding: 20px;
+  margin: 20px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+main .form label {
+  font-size: 20px;
+  color: #4d4d4d;
+}
+main .form input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+main .form button {
+  background-color: #666;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+main .form button:hover {
+  background-color: #333;
+}
+main .card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: 20px;
+}
+main .card-container .card {
+  border: 1px solid #f1f1f1;
+  padding: 20px;
+  margin: 20px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+main .card-container .card img {
+  width: 100%;
+}
+main .card-container .card h2 {
+  font-size: 20px;
+  color: #4d4d4d;
+}
+main .card-container .card p {
+  font-size: 15px;
+  color: #4d4d4d;
+}
+main .card-container .card button {
+  background-color: #666;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
 /*# sourceMappingURL=index.css.map */
